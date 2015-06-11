@@ -188,12 +188,12 @@ public class MultiTouchAdapter extends PQMTClient {
                 param2 = touch_gesture.m_params.get(1).intValue();
                 param3 = touch_gesture.m_params.get(2).intValue();
                 param4 = touch_gesture.m_params.get(3).intValue();
-                
+ /*               
                 System.out.println("start touch_gesture.m_params.get(0).intValue(): " + touch_gesture.m_params.get(0).intValue());
                         System.out.println("start touch_gesture.m_params.get(0).intValue(): " + touch_gesture.m_params.get(1).intValue());
                         System.out.println("start touch_gesture.m_params.get(0).intValue(): " + touch_gesture.m_params.get(2).intValue());
                         System.out.println("start touch_gesture.m_params.get(0).intValue(): " + touch_gesture.m_params.get(3).intValue());
-
+*/
                 System.out.println("rotate starts ");
             case PQMTClientConstant.TG_ROTATE_CLOCK:
                 dx = param1 - touch_gesture.m_params.get(2).intValue();
@@ -204,11 +204,11 @@ public class MultiTouchAdapter extends PQMTClient {
                    // if(touch_gesture.m_params.get(0).intValue()!=0){
                         rotateangle -= 2; 
                         TVisEditor.rotate(rotateangle);
-                        System.out.println("touch_gesture.m_params.get(0).intValue(): " + touch_gesture.m_params.get(0).intValue());
+  /*                      System.out.println("touch_gesture.m_params.get(0).intValue(): " + touch_gesture.m_params.get(0).intValue());
                         System.out.println("touch_gesture.m_params.get(0).intValue(): " + touch_gesture.m_params.get(1).intValue());
                         System.out.println("touch_gesture.m_params.get(0).intValue(): " + touch_gesture.m_params.get(2).intValue());
                         System.out.println("touch_gesture.m_params.get(0).intValue(): " + touch_gesture.m_params.get(3).intValue());
-                        
+    */                    
                   //  }
                     
                 }

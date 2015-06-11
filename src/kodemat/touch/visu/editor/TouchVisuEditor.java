@@ -101,6 +101,10 @@ public class TouchVisuEditor implements IEditor {
     public static final String GLOBAL_BUTTON = "BasicEditor_GLOBAL_BUTTON";
     public static final String MODIFICATION_MENU_BUTTON = "BasicEditor_MODIFICATION_BUTTON";
     public static final String ESC_BUTTON = "BasicEditor_ESC_BUTTON";
+    
+     public static final String ROTATE_RIGHT_BUTTON = "BasicEditor_ROTATE_RIGHT_BUTTON";
+     public static final String ROTATE_LEFT_BUTTON = "BasicEditor_ROTATE_LEFT_BUTTON";
+    
     private KeyListener keyListener = new KeyListener();
     private boolean waitForClick_Move = false;
     private boolean openHistory = false;
@@ -170,12 +174,21 @@ public class TouchVisuEditor implements IEditor {
 
         inputManager.addMapping(MODIFICATION_MENU_BUTTON, new KeyTrigger(KeyInput.KEY_F4));
         inputManager.addMapping(ESC_BUTTON, new KeyTrigger(KeyInput.KEY_ESCAPE));
+        
+                //TODO: remove after video
+        inputManager.addMapping(ROTATE_LEFT_BUTTON, new KeyTrigger(KeyInput.KEY_DELETE));
+        inputManager.addMapping(ROTATE_RIGHT_BUTTON, new KeyTrigger(KeyInput.KEY_PGDN));
        
         inputManager.addListener(keyListener, LOCAL_UNDO_BUTTON);
         inputManager.addListener(keyListener, LOCAL_REDO_BUTTON);
         inputManager.addListener(keyListener, GLOBAL_BUTTON);
         inputManager.addListener(keyListener, MODIFICATION_MENU_BUTTON);
         inputManager.addListener(keyListener, ESC_BUTTON);
+        inputManager.addListener(keyListener, ROTATE_LEFT_BUTTON);
+        inputManager.addListener(keyListener, ROTATE_RIGHT_BUTTON);
+
+        
+
 
     }
 
@@ -811,9 +824,6 @@ public class TouchVisuEditor implements IEditor {
         JOptionPane.showMessageDialog(null, "Successfully extracted file");
     }
 
-    public void rotate() {
-        modelEditActionHandler.rotate(numberClicks);
-    }
 
     public void scale() {
         Nifty nifty = guiAppState.getNifty();
@@ -981,6 +991,17 @@ public class TouchVisuEditor implements IEditor {
             if (name.equals(ESC_BUTTON)) {
                //deselect and close the panel
                 closeModificator();
+            }
+            
+            //for testing and video making
+            if (name.equals(ROTATE_RIGHT_BUTTON)) {
+               //deselect and close the panel
+                System.out.print("should rotate");
+               rotate(90);
+            }
+            if (name.equals(ROTATE_LEFT_BUTTON)) {
+               //deselect and close the panel
+               rotate(-90);
             }
         }
     }
