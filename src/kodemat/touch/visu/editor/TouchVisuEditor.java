@@ -106,7 +106,7 @@ public class TouchVisuEditor implements IEditor {
      public static final String ROTATE_LEFT_BUTTON = "BasicEditor_ROTATE_LEFT_BUTTON";
      public static final String ROTATE_UP_BUTTON = "BasicEditor_ROTATE_UP_BUTTON";
      public static final String ROTATE_DOWN_BUTTON = "BasicEditor_ROTATE_DOWN_BUTTON";
-     public static final String DELETE_OBJECT_BUTTON = "BasicEditor_ROTATE_DOWN_BUTTON";
+     public static final String DELETE_OBJECT_BUTTON = "BasicEditor_DELETE_OBJECT_BUTTON";
     
     private KeyListener keyListener = new KeyListener();
     private boolean waitForClick_Move = false;
@@ -183,7 +183,7 @@ public class TouchVisuEditor implements IEditor {
         inputManager.addMapping(ROTATE_UP_BUTTON, new KeyTrigger(KeyInput.KEY_HOME));
         inputManager.addMapping(ROTATE_LEFT_BUTTON, new KeyTrigger(KeyInput.KEY_DELETE));
         inputManager.addMapping(ROTATE_RIGHT_BUTTON, new KeyTrigger(KeyInput.KEY_PGDN));
-        inputManager.addMapping(DELETE_OBJECT_BUTTON, new KeyTrigger(KeyInput.KEY_BACK));
+        inputManager.addMapping(DELETE_OBJECT_BUTTON, new KeyTrigger(KeyInput.KEY_NUMPAD0));
         
        
         inputManager.addListener(keyListener, LOCAL_UNDO_BUTTON);
@@ -849,14 +849,14 @@ public class TouchVisuEditor implements IEditor {
     }
 
     public void deleteComponent() {
-        int n = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + selectedObjectHandler.getSelectedModel().getName() + "?",
-                "Warning",
-                JOptionPane.YES_NO_OPTION);
-        if (n == JOptionPane.YES_OPTION) {
+//        int n = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + selectedObjectHandler.getSelectedModel().getName() + "?",
+//                "Warning",
+//                JOptionPane.YES_NO_OPTION);
+//        if (n == JOptionPane.YES_OPTION) {
 
             selectedObjectHandler.delete();
 //           closeModificator();
-        }
+//        }
     }
 
     public void deleteAllComponents() {
@@ -1006,23 +1006,20 @@ public class TouchVisuEditor implements IEditor {
             //for testing and video making
             if (name.equals(ROTATE_RIGHT_BUTTON)) {
                //deselect and close the panel
-                System.out.print("should rotate");
-               rotate(90f);
-            }
-            if (name.equals(ROTATE_LEFT_BUTTON)) {
-               //deselect and close the panel
+
                rotate(-90f);
             }
+            if (name.equals(ROTATE_LEFT_BUTTON)) {
+               rotate(90f);
+            }
             if (name.equals(ROTATE_UP_BUTTON)) {
-               //deselect and close the panel
                rotate(0f);
             }
             if (name.equals(ROTATE_DOWN_BUTTON)) {
-               //deselect and close the panel
                rotate(180f);
             }
             if (name.equals(DELETE_OBJECT_BUTTON)) {
-               //deselect and close the panel
+                System.out.print("should delete");
               deleteComponent();
             }
         }
