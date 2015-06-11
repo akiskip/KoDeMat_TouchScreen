@@ -61,6 +61,9 @@ public class TouchVisuClient extends SimpleApplication implements IKoDeMatClient
     private NiftyConnectAppState niftyConnectAppState;
     private ScreenshotAppState screenShotState = new ScreenshotAppState();
     private static Properties globalProperties;
+
+    
+    
     private boolean connected;
 
     
