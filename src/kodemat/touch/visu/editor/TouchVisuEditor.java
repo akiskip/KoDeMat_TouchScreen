@@ -193,6 +193,9 @@ public class TouchVisuEditor implements IEditor {
         inputManager.addListener(keyListener, ESC_BUTTON);
         inputManager.addListener(keyListener, ROTATE_LEFT_BUTTON);
         inputManager.addListener(keyListener, ROTATE_RIGHT_BUTTON);
+        inputManager.addListener(keyListener, ROTATE_UP_BUTTON);
+        inputManager.addListener(keyListener, ROTATE_DOWN_BUTTON);
+        inputManager.addListener(keyListener, DELETE_OBJECT_BUTTON);
 
         
 
