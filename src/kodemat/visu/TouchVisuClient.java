@@ -105,7 +105,7 @@ public class TouchVisuClient extends SimpleApplication implements IKoDeMatClient
         cam.setLocation(new Vector3f(0, 5, 10));
 
         DirectionalLight sun = new DirectionalLight();
-        sun.setDirection(new Vector3f(1, -1, 2).normalizeLocal());
+        sun.setDirection(new Vector3f(-1, -1, 2).normalizeLocal());
         sun.setColor(ColorRGBA.White);
         DirectionalLight sun1 = new DirectionalLight();
         sun1.setDirection(new Vector3f(-0.57735026f, 0.57735026f, 0.57735026f));
