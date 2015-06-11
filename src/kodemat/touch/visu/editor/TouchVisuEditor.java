@@ -104,6 +104,9 @@ public class TouchVisuEditor implements IEditor {
     
      public static final String ROTATE_RIGHT_BUTTON = "BasicEditor_ROTATE_RIGHT_BUTTON";
      public static final String ROTATE_LEFT_BUTTON = "BasicEditor_ROTATE_LEFT_BUTTON";
+     public static final String ROTATE_UP_BUTTON = "BasicEditor_ROTATE_UP_BUTTON";
+     public static final String ROTATE_DOWN_BUTTON = "BasicEditor_ROTATE_DOWN_BUTTON";
+     public static final String DELETE_OBJECT_BUTTON = "BasicEditor_ROTATE_DOWN_BUTTON";
     
     private KeyListener keyListener = new KeyListener();
     private boolean waitForClick_Move = false;
@@ -176,8 +179,12 @@ public class TouchVisuEditor implements IEditor {
         inputManager.addMapping(ESC_BUTTON, new KeyTrigger(KeyInput.KEY_ESCAPE));
         
                 //TODO: remove after video
+        inputManager.addMapping(ROTATE_DOWN_BUTTON, new KeyTrigger(KeyInput.KEY_END));
+        inputManager.addMapping(ROTATE_UP_BUTTON, new KeyTrigger(KeyInput.KEY_HOME));
         inputManager.addMapping(ROTATE_LEFT_BUTTON, new KeyTrigger(KeyInput.KEY_DELETE));
         inputManager.addMapping(ROTATE_RIGHT_BUTTON, new KeyTrigger(KeyInput.KEY_PGDN));
+        inputManager.addMapping(DELETE_OBJECT_BUTTON, new KeyTrigger(KeyInput.KEY_BACK));
+        
        
         inputManager.addListener(keyListener, LOCAL_UNDO_BUTTON);
         inputManager.addListener(keyListener, LOCAL_REDO_BUTTON);
@@ -997,11 +1004,23 @@ public class TouchVisuEditor implements IEditor {
             if (name.equals(ROTATE_RIGHT_BUTTON)) {
                //deselect and close the panel
                 System.out.print("should rotate");
-               rotate(90);
+               rotate(90f);
             }
             if (name.equals(ROTATE_LEFT_BUTTON)) {
                //deselect and close the panel
-               rotate(-90);
+               rotate(-90f);
+            }
+            if (name.equals(ROTATE_UP_BUTTON)) {
+               //deselect and close the panel
+               rotate(0f);
+            }
+            if (name.equals(ROTATE_DOWN_BUTTON)) {
+               //deselect and close the panel
+               rotate(180f);
+            }
+            if (name.equals(DELETE_OBJECT_BUTTON)) {
+               //deselect and close the panel
+              deleteComponent();
             }
         }
     }
